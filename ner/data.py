@@ -1,5 +1,4 @@
 from __future__ import annotations
-from augment import generate_samples_by_entities
 
 class Sample:
     def __init__(self, toks: list[str], tags: list[str]) -> None:
@@ -140,3 +139,11 @@ class Corpus:
                                 class_entities[key] = [sample.toks[start_idx:end_idx]]
                     mentions.add(mention)
         return class_entities
+
+
+if __name__ == "__main__":
+    my_corpus = Corpus("datasets/conll2003/train.txt")
+    print(my_corpus[10])
+    from augment import generate_samples_by_synonyms
+    outputs = generate_samples_by_synonyms(my_corpus[10], 0.7, num_aug_samples=1)
+    print(outputs)
