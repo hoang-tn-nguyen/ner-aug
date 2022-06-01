@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+
 class Sample:
     def __init__(self, toks: list[str], tags: list[str]) -> None:
         self.toks = toks
@@ -143,7 +144,13 @@ class Corpus:
 
 if __name__ == "__main__":
     my_corpus = Corpus("datasets/conll2003/train.txt")
-    print(my_corpus[10])
-    from augment import generate_samples_by_synonyms
-    outputs = generate_samples_by_synonyms(my_corpus[10], 0.7, num_aug_samples=1)
-    print(outputs)
+    print("Original:", my_corpus[10])
+    from augment import (
+        generate_sentences_by_shuffle_within_segments,
+        generate_samples_by_synonyms,
+        generate_samples_by_entities,
+    )
+
+    outputs = generate_samples_by_entities(my_corpus[10], my_corpus.get_entities(), 0.3, num_aug_samples=1)
+    print("After:", outputs)
+    print("Before:", my_corpus[10])
