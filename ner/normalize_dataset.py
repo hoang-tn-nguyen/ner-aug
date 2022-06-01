@@ -25,7 +25,7 @@ def collate_fewnerd(samplelines):
     return words, tags
 
 
-def convert_bio(file_path, out_file, collate_fn):
+def normalize_data(file_path, out_file, collate_fn):
     with open(file_path, "r", encoding="utf-8") as f:
         lines = f.readlines()
     f_out = open(out_file, "w")
@@ -44,13 +44,13 @@ def convert_bio(file_path, out_file, collate_fn):
     
 
 if __name__ == "__main__":
-    convert_bio("original_datasets/mit-movie/train.txt", 'datasets/mit-movie/train.txt', collate_mitmovie)
-    convert_bio("original_datasets/mit-movie/test.txt", 'datasets/mit-movie/test.txt', collate_mitmovie)
+    normalize_data("original_datasets/mit-movie/train.txt", 'datasets/mit-movie/train.txt', collate_mitmovie)
+    normalize_data("original_datasets/mit-movie/test.txt", 'datasets/mit-movie/test.txt', collate_mitmovie)
 
-    convert_bio("original_datasets/mit-restaurant/train.txt", 'datasets/mit-restaurant/train.txt', collate_mitrestaurant)
-    convert_bio("original_datasets/mit-restaurant/test.txt", 'datasets/mit-restaurant/test.txt', collate_mitrestaurant)
+    normalize_data("original_datasets/mit-restaurant/train.txt", 'datasets/mit-restaurant/train.txt', collate_mitrestaurant)
+    normalize_data("original_datasets/mit-restaurant/test.txt", 'datasets/mit-restaurant/test.txt', collate_mitrestaurant)
 
-    convert_bio("original_datasets/conll2003/train.txt", 'datasets/conll2003/train.txt', collate_conll2003)
-    convert_bio("original_datasets/conll2003/valid.txt", 'datasets/conll2003/valid.txt', collate_conll2003)
-    convert_bio("original_datasets/conll2003/test.txt", 'datasets/conll2003/test.txt', collate_conll2003)
+    normalize_data("original_datasets/conll2003/train.txt", 'datasets/conll2003/train.txt', collate_conll2003)
+    normalize_data("original_datasets/conll2003/valid.txt", 'datasets/conll2003/valid.txt', collate_conll2003)
+    normalize_data("original_datasets/conll2003/test.txt", 'datasets/conll2003/test.txt', collate_conll2003)
 
