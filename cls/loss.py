@@ -108,8 +108,8 @@ class KLLossWithMetric(Metric):
         # loss = self.loss_fn(output, target)
         loss = torch.sum(loss, dim=-1)  # (B,)
 
-        size = torch.sum(conf_mask, dim=-1)  # (B,) elements can be zero
-        ones = torch.ones_like(size).to(size.device)  # (B,) all elements are ones
+        size = torch.sum(conf_mask, dim=-1)  # (1,) elements can be zero
+        ones = torch.ones_like(size).to(size.device)  # (1,) all elements are ones
         total = torch.max(size, ones)  # (B,) avoiding zero division
         loss_batch_mean = torch.sum(loss * conf_mask, dim=-1) / total
         return loss_batch_mean * self.coeff

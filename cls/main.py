@@ -27,8 +27,8 @@ if __name__ == "__main__":
         val_loader = data.DataLoader(val_data, batch_size=8, shuffle=True)
 
         if with_uda:
-            uda_data = IMDB("datasets/aclImdb/train/", dataset_size=25000)
-            uda_corpus = Corpus(uda_data, augmentation={"N": 1, "SYNONYM": 0.5})
+            uda_data = IMDB("datasets/aclImdb/train/", dataset_size=2500)
+            uda_corpus = Corpus(uda_data, augmentation={"N": 1, "SYNONYM": 0.3})
             uda_loader = data.DataLoader(uda_corpus, batch_size=16, shuffle=True)
         else:
             uda_loader = None
