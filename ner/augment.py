@@ -40,9 +40,7 @@ def generate_samples_by_synonyms(
         pos_alignment = 0
         for i in range(len(sample)):
             token, tag = sample[i]
-            if (
-                generated_mask[i] and token not in stop_words and tag == "O"
-            ):  # token to be replaced
+            if generated_mask[i] and token not in stop_words:  # token to be replaced
                 synonyms = set()
                 for syn in wordnet.synsets(token):
                     for l in syn.lemmas():
